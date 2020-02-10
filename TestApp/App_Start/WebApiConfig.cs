@@ -16,9 +16,11 @@ namespace TestApp
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                routeTemplate: "api/{controller}/{name}/{city}",
+                defaults: new { name = RouteParameter.Optional, city = RouteParameter.Optional }
             );
+            config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling
+            = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
         }
     }
 }
